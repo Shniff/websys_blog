@@ -1,0 +1,82 @@
+/* create post */
+.create-post-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.create-post-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Optional - For button styling */
+.btn-register {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-register:hover {
+    background-color: #0056b3;
+}
+
+/* Vote Buttons */
+.vote-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.upvote {
+    background-color: #28a745; /* Green for upvote */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+/* upvote and downvote */
+.downvote {
+    background-color: #dc3545; /* Red for downvote */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Hover and Active States */
+.upvote:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.1); /* Slight scale-up effect */
+}
+
+.downvote:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: scale(1.1); /* Slight scale-up effect */
+}
+
+.upvote:active, .downvote:active {
+    transform: scale(0.95); /* Slight shrink on click */
+}
