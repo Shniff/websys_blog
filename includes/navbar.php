@@ -36,7 +36,7 @@ $current_page = basename($_SERVER['PHP_SELF']); // Get the current page name
         <div class="menu">
             <?php if (isset($_SESSION['user_id'])): ?>
                 <!-- Show Home and Messages links if logged in -->
-                <a href="user.php" <?php echo $current_page == 'user.php' ? 'class="active"' : ''; ?>>Home</a>
+                <a href="/user.php" <?php echo $current_page == 'user.php' ? 'class="active"' : ''; ?>>Home</a>
 
 
 
@@ -72,7 +72,7 @@ $current_page = basename($_SERVER['PHP_SELF']); // Get the current page name
                     <li><hr class="dropdown-divider" style="border-color: #333333;"></li>
                     <!-- Logout Form -->
                     <li>
-                        <form action="Logout.php" method="POST">
+                        <form action="/logout.php" method="POST">
                             <button type="submit" class="dropdown-item" style="color: rgba(255, 255, 255, 0.9); padding: 10px 20px; background-color: #1a1a1a;">Logout</button>
                         </form>
                     </li>

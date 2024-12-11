@@ -3,7 +3,13 @@ session_start();
 require_once($_SERVER["DOCUMENT_ROOT"] . "/app/config/DatabaseConnect.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $post_id = $_GET['id'];
+    if (!isset($_GET['post_id']) || !is_numeric($_GET['post_id'])) {
+        $_SESSION["error"] = "Invalid post ID.";
+        header("Location: /user.php");
+        exit;
+    }
+
+    $post_id = intval($_GET['post_id']);
     $title = htmlspecialchars($_POST["title"]);
     $content = htmlspecialchars($_POST["content"]);
     $category = htmlspecialchars($_POST["category"]);
@@ -15,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $uploadDir = $_SERVER["DOCUMENT_ROOT"] . "/uploads/";
         $fileName = basename($_FILES['image_url']['name']);
         $targetFilePath = $uploadDir . $fileName;
-        
+
         // Move the uploaded file
         if (move_uploaded_file($_FILES['image_url']['tmp_name'], $targetFilePath)) {
             $imagePath = "/uploads/" . $fileName;
@@ -35,15 +41,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($imagePath) {
             $query .= ', image_url = :image_url';
         }
-        $query .= ' WHERE id = :id AND user_id = :user_id';
+        $query .= ' WHERE post_id = :post_id AND user_id = :user_id';
 
         $stmt = $conn->prepare($query);
-        $stmt->bindParam(':id', $post_id);
+        $stmt->bindParam(':post_id', $post_id, PDO::PARAM_INT);
         $stmt->bindParam(':title', $title);
         $stmt->bindParam(':content', $content);
         $stmt->bindParam(':category', $category);
-        $stmt->bindParam(':user_id', $_SESSION['user_id']);
-        
+        $stmt->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+
         if ($imagePath) {
             $stmt->bindParam(':image_url', $imagePath);
         }
@@ -53,7 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["success"] = "Post updated successfully!";
         header("Location: /user.php");
         exit;
-
     } catch (Exception $e) {
         $_SESSION["error"] = "Error: " . $e->getMessage();
         header("Location: /user.php");

@@ -91,5 +91,6 @@
         border: none;
         font-size: 1.5em;
         cursor: pointer;
+        color: inherit;
     }
 </style>

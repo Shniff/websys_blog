@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 session_regenerate_id(true); // Prevent session fixation
 
                 // Store user data in session
-                $_SESSION['user_id'] = $users[0]['id'];
+                $_SESSION['user_id'] = $users[0]['user_id'];
                 $_SESSION['username'] = $users[0]['username'];
                 $_SESSION['fullname'] = $users[0]['fullname'];
                 $_SESSION['is_admin'] = $users[0]['is_admin'];

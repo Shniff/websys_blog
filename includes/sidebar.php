@@ -1,3 +1,8 @@
+<?php
+// Check if the user is logged in
+$isLoggedIn = isset($_SESSION['user_id']); // Assuming you store the user's ID in the session
+?>
+
 <div class="sidebar">
         <!-- Logo Section -->
         <div class="sidebar-logo">
@@ -6,8 +11,10 @@
 
         <!-- Navigation Links -->
         <div class="sidebar-section">
-            <a href="#" class="sidebar-link active">
-                <i class="icon">🏠</i> Home
+        <a href="<?php echo $isLoggedIn ? '/user.php' : '/index.php'; ?>" class="sidebar-link active">
+            <i class="icon">🏠</i> Home
+        </a>
+                
             </a>
             <a href="#" class="sidebar-link">
                 <i class="icon">🔥</i> Popular
@@ -19,9 +26,9 @@
             <h3>Categories</h3>
             <ul>
 
-                <li><a href="#"><i class="icon">💻</i> Technology</a></li>
-                <li><a href="#"><i class="icon">🌟</i> Lifestyle</a></li>
-                <li><a href="#"><i class="icon">🎬</i> Travel</a></li>
+                <li><a href="index.php?category=Technology"><i class="icon">💻</i> Technology</a></li>
+                <li><a href="index.php?category=Lifestyle"><i class="icon">🌟</i> Lifestyle</a></li>
+                <li><a href="index.php?category=Travel"><i class="icon">🎬</i> Travel</a></li>
             </ul>
         </div>
 

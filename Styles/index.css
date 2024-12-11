@@ -213,6 +213,15 @@ a {
     pointer-events: none;
     z-index: 1;
   }
+  
+
+  .upvote.voted {
+    color: green;
+    }
+
+    .downvote.voted {
+        color: red;
+    }
 
 /* Animations */
 @keyframes fadeIn {
